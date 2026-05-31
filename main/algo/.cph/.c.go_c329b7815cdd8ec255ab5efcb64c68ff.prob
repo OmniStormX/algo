@@ -1,0 +1,1 @@
+{"name":"Local: c","url":"/home/omnistorm/桌面/code/algo/main/algo/c.go","tests":[{"id":1774829803352,"input":"1","output":"4\n3\n2\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/omnistorm/桌面/code/algo/main/algo/c.go","group":"local","local":true}

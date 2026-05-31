@@ -1,0 +1,1 @@
+{"name":"Local: kmp","url":"/home/omnistorm/桌面/code/algo/lc503/kmp.cpp","tests":[{"id":1779642176163,"input":"ABABABC\nABA\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/omnistorm/桌面/code/algo/lc503/kmp.cpp","group":"local","local":true}
