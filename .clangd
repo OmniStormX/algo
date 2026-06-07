@@ -1,0 +1,4 @@
+CompileFlags:
+  Add:
+    # 使用 C++20：项目代码依赖 std::span 和 std::format。
+    - -std=c++20
