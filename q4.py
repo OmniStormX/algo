@@ -15,8 +15,6 @@ class Solution:
             d[x] += 1
 
         M = min(100000, maxVal)
-        # print(d[:M + 10])
-        # print("M = ", M)
         for i in range(2, M + 1):
             q = 0
             mx = 0
