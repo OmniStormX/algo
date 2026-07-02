@@ -1,0 +1,1 @@
+docker run -d -p 6763:6763 -e POD_VERSION=V1 kubenetes-hello
