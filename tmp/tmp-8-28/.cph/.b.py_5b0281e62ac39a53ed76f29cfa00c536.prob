@@ -1,0 +1,1 @@
+{"name":"Local: b","url":"/home/omnistorm/桌面/code/algo/tmp/tmp-8-28/b.py","tests":[{"id":1787913079195,"input":"4 6\n1 4 2534\n2 3 3512\n1 2 28351\n1 3 6618\n2 4 1805\n3 4 12884","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/omnistorm/桌面/code/algo/tmp/tmp-8-28/b.py","group":"local","local":true}

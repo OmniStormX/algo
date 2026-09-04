@@ -128,59 +128,81 @@ def inv(a, mod):
     return x % mod
 
 
+class Line:
+    __slots__ = ("k", "b")
+
+    def __init__(self, k, b):
+        self.k = k
+        self.b = b
+
+    def f(self, x):
+        return self.k * x + self.b
+
+
+def bad(a, b, c):
+    return (b.b - a.b) * (a.k - c.k) >= (c.b - a.b) * (a.k - b.k)
+
+
+def fmax(x, y):
+    if x > y:
+        return x
+    return y
+
+
+def fmin(x, y):
+    if x < y:
+        return x
+    return y
+
+
+NN = 3
+
+
+class Dsu_with_weight:
+
+    def __init__(self, n):
+        self.t = [i for i in range(n)]
+        self.val = [0 for _ in range(n)]
+        self.end = [i for i in range(n)]
+
+    def find(self, x):
+        if self.t[x] == x:
+            return self.t[x], self.val[x]
+        fa, val = self.find(self.t[x])
+        self.t[x] = fa
+        self.val[x] += val
+        return self.t[x], self.val[x]
+
+    # x -> y
+    def merge(self, x, y):
+        fax, valx = self.find(x)
+        fay, valy = self.find(y)
+        if fax == fay:
+            return True
+        self.end[fay] = self.end[fax]
+        self.val[fax] += valy + 1
+        self.t[fax] = fay
+        return True
+
+
 def solve():
-    n, m = MI()
-    e = [[] for i in range(n)]
-    f = [0 for i in range(n)]
+    K = I()
 
-    for v in range(n - 1):
-        u, v = MI()
-        u -= 1
-        v -= 1
-        e[u].append(v)
-        e[v].append(u)
+    dsu = Dsu_with_weight(30009)
+    for i in range(K):
+        op, *args = sys.stdin.readline().strip().split()
+        if op == "M":
+            x, y = args
+            x = int(x)
+            y = int(y)
+            fy, vy = dsu.find(y)
+            endy = dsu.end[fy]
+            dsu.merge(x, endy)
 
-    def dfs(u, fa):
-        f[u] = 1
-        for v in e[u]:
-            if v == fa:
-                continue
-            dfs(v, u)
-            f[u] = f[u] * (f[v] + 1) % m
-
-    up = [1] * n
-    ans = [0] * n
-
-    def dfs2(u, fa):
-        ans[u] = f[u] * up[u] % m
-
-        ch = []
-        for v in e[u]:
-            if v == fa:
-                continue
-            ch.append(v)
-
-        k = len(ch)
-
-        pre = [1] * (k + 1)
-        suf = [1] * (k + 1)
-
-        for i in range(k):
-            pre[i + 1] = pre[i] * (f[ch[i]] + 1) % m
-
-        for i in range(k - 1, -1, -1):
-            suf[i] = suf[i + 1] * (f[ch[i]] + 1) % m
-
-        for i, v in enumerate(ch):
-            up[v] = (up[u] * pre[i] % m * suf[i + 1] % m + 1) % m
-            dfs2(v, u)
-
-    dfs(0, -1)
-    dfs2(0, -1)
-
-    for v in range(n):
-        o(ans[v])
-    pass
+        else:
+            s = args[0]
+            fx, vx = dsu.find(int(s))
+            o(vx)
 
 
 t = 1
