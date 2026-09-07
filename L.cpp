@@ -92,10 +92,10 @@ namespace matrix {
     struct matrix {
         int h, w;
         std::vector<std::vector<int>> a;
-    
-        matrix(int h, int w) : h(h), w(w), a(h, std::vector<int>(w, 0)) 
+
+        matrix(int h, int w) : h(h), w(w), a(h, std::vector<int>(w, 0))
         {}
-    
+
         friend matrix operator* (const matrix& a, const matrix& b) {
             matrix ans(a.h, a.w);
             assert(a.w == b.h);
@@ -157,13 +157,13 @@ public:
     }
 };
 
- 
+
 template<const int T>
 struct ModInt {
     const static int mod = T;
     int x;
     ModInt(int x = 0) : x(x % mod) {}
-    ModInt(long long x) : x(int(x % mod)) {} 
+    ModInt(long long x) : x(int(x % mod)) {}
     int val() { return x; }
     ModInt operator + (const ModInt &a) const { int x0 = x + a.x; return ModInt(x0 < mod ? x0 : x0 - mod); }
     ModInt operator - (const ModInt &a) const { int x0 = x - a.x; return ModInt(x0 < 0 ? x0 + mod : x0); }
@@ -181,7 +181,7 @@ struct ModInt {
     friend ModInt operator / (int y, const ModInt &a){ return ModInt(y) / a;}
     friend std::ostream &operator<<(std::ostream &os, const ModInt &a) { return os << a.x;}
     friend std::istream &operator>>(std::istream &is, ModInt &t){return is >> t.x;}
-    
+
     ModInt pow(int64_t n) const {
         ModInt res(1), mul(x);
         while(n){
@@ -191,7 +191,7 @@ struct ModInt {
         }
         return res;
     }
-        
+
     ModInt inv() const {
         int a = x, b = mod, u = 1, v = 0;
         while (b) {
@@ -202,7 +202,7 @@ struct ModInt {
         if (u < 0) u += mod;
         return u;
     }
-        
+
 };
 
 using Z = ModInt<998244353>;
@@ -214,9 +214,9 @@ class Fenwicktree {
     int time = 0;
 public :
     Fenwicktree(int n): t(n + 1, 0), tag(n + 1, 0) {}
- 
+
    inline int lowbit(int x) { return x & -x; }
- 
+
    void add(int x, T y) {
        while (x < t.size()) {
             if (tag[x] == time)
@@ -228,7 +228,7 @@ public :
             x += lowbit(x);
        }
    }
- 
+
    T quiry(int x) {
        T ans = 0;
        while (x) ans += (tag[x] == time ? t[x]: 0), x -= lowbit(x);
@@ -236,7 +236,7 @@ public :
    }
 
     void clear() { time++; }
- 
+
    T quiry(int l, int r) {
        assert(l > 0);
        return quiry(r) - quiry(l - 1);
@@ -254,7 +254,7 @@ public:
     int find(int x) {
         return t[x] == x ? x : find(t[x]);
     }
-    
+
     void merge(int x, int y) {
         int k1 = find(x), k2 = find(y);
         if (k1 == k2) return;
@@ -379,7 +379,7 @@ public:
             }
             u = t[u].son[p];
         }
-        t[p].val++;
+        t[u].val++;
         return u;
     }
 
