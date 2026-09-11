@@ -2,7 +2,6 @@ package main
 
 import (
 	"container/list"
-	"fmt"
 )
 
 type State struct {
@@ -130,18 +129,18 @@ func minMoves(classroom []string, energy int) int {
 	return Min
 }
 
-func main() {
-	cl := []string{"S.", "XL"}
-	energy := 2
-	// fmt.Println(minMoves(cl, energy))
-	// cl = []string{"LS", "RL"}
-	// energy = 4
-	// fmt.Println(minMoves(cl, energy))
-	cl = []string{"RL", "S."}
-	energy = 1
-	fmt.Println(minMoves(cl, energy))
-	// cl = []string{"SL."}
-	// energy = 2
-	// fmt.Println(minMoves(cl, energy))
+// func main() {
+// 	cl := []string{"S.", "XL"}
+// 	energy := 2
+// 	// fmt.Println(minMoves(cl, energy))
+// 	// cl = []string{"LS", "RL"}
+// 	// energy = 4
+// 	// fmt.Println(minMoves(cl, energy))
+// 	cl = []string{"RL", "S."}
+// 	energy = 1
+// 	fmt.Println(minMoves(cl, energy))
+// 	// cl = []string{"SL."}
+// 	// energy = 2
+// 	// fmt.Println(minMoves(cl, energy))
 
-}
+// }
