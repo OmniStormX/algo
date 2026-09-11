@@ -1,0 +1,1 @@
+{"name":"Local: tarjan","url":"/home/omnistorm/桌面/code/algo/template_cpp/tarjan.cpp","tests":[{"id":1788947619531,"input":"2 2\n1 1\n1 2\n2 1","output":"2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/omnistorm/桌面/code/algo/template_cpp/tarjan.cpp","group":"local","local":true}
