@@ -1,8 +1,10 @@
 # Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+
 class Solution:
 
     def getMid(self, head):
@@ -34,7 +36,7 @@ class Solution:
                 mp.next = r2
                 mp = mp.next
                 r2 = r2.next
-        
+
         while r1:
             mp.next = r1
             mp = mp.next
@@ -44,7 +46,6 @@ class Solution:
             mp = mp.next
             r2 = r2.next
         return head
-             
 
     def sortList(self, head: ListNode) -> ListNode:
         return self.mergeSort(head)
