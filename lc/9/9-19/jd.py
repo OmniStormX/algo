@@ -1,4 +1,5 @@
-# 长度为 n 的数组 a, 1 <= a[i] <= 10^6，求 i < j 且 a[i] * a[j] 的因子数为 4 的 (i, j) 的对数
+# 长度为 n 的数组 a, 1 <= a[i] <= 10^6。
+# 求 i < j 且 a[i] * a[j] 的因子数为 4 的 (i, j) 的对数
 import sys
 from math import isqrt
 
