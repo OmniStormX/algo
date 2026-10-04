@@ -138,7 +138,7 @@ class Solution {
 public:
     int longestValidParentheses(string s) {
         int n = s.size();
-        vector<int> pre(n + 1, 0);
+        vector<Info> pre(n + 1, 0);
         for (int i = 1; i <= n; i++) {
             if (s[i - 1] == '(') {
                 pre[i] = 1;
@@ -147,24 +147,24 @@ public:
             }
         }
         for (int i = 1; i <= n; i++)
-            pre[i] += pre[i - 1];
+            pre[i] = (pre[i - 1].x + pre[i].x);
 
-        auto seg = SegmentTree<Info, Info(*)(Info, Info)>(n + 1, merge, Info());
+        auto seg = SegmentTree<Info, Info(*)(Info, Info)>(pre, merge, Info());
 		map<int, vector<int>> m;
         for (int i = 0; i <= n; i++) {
-            seg.update(i, pre[i]);
-			m[pre[i]].push_back(i);
+            // seg.update(i, pre[i]);
+			m[pre[i].x].push_back(i);
         }
         int ans = 0;
 
         for (int i = 0; i < n; i++) {
-			int base = pre[i];
+			int base = pre[i].x;
             auto check = [base](Info a) {
                 return a.x >= base;
             };
 			if (i + 1 <= n) {
 				int p = seg.max_right(i + 1, check);
-				auto& v = m[pre[i]];
+				auto& v = m[pre[i].x];
 				auto ptr = lower_bound(v.begin(), v.end(), p);
 				if (ptr == v.begin())
 					continue;
