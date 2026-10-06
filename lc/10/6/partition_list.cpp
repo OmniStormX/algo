@@ -23,8 +23,10 @@ public:
     ListNode* partition(ListNode* head, int x) {
         using t = ListNode*;
 
-        t rt1 = new ListNode(-1); // 小于 x
-        t rt2 = new ListNode(-1); // 大于 x
+        auto r1 = make_shared<ListNode>(ListNode(-1)); // 小于 x
+        auto r2 = make_shared<ListNode>(ListNode(-1)); // 大于 x
+        t rt1 = r1.get(); // 小于 x
+        t rt2 = r2.get(); // 大于 x
         t pre1 = rt1;
         t pre2 = rt2;
 
@@ -40,9 +42,6 @@ public:
         pre1->next = nullptr;
         pre2->next = nullptr;
         t hd = rt1;
-        // if (hd == nullptr) {
-        //     hd = rt2;
-        // }
 
         t tmp = hd;
         while (tmp->next != nullptr) {
@@ -50,12 +49,7 @@ public:
         }
         t tmp2 = rt2->next;
         tmp->next = rt2->next;
-        // while (tmp2 != nullptr) {
-        //     tmp2 = tmp2->next;
-        // }
         t ans = rt1->next;
-        delete rt1;
-        delete rt2;
         return ans;
     }
 };
