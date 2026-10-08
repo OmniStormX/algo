@@ -1,3 +1,6 @@
+// https://leetcode.cn/problems/remove-outermost-parentheses/description/
+#include <bits/stdc++.h>
+using namespace std;
 class Solution {
 public:
     string removeOuterParentheses(string s) {
