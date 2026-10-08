@@ -1,3 +1,8 @@
+/*
+	有向图中，每个点有权值 $w_i$，只有第一次经过该点可以获得奖励 $w_i$。
+	给定出发点 s ，求能获得的最大奖励和。 
+*/ 
+
 #include <algorithm>
 #include <cstddef>
 #include <cstdint>

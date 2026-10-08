@@ -1,3 +1,9 @@
+/*
+题目大意：有一个阵列横向排列，小兵占一格，炮兵占两格，不允许两个炮兵占一起。
+求长度为 n 的阵列有多少种排列方式，按 1E9 + 7 取模。
+
+*/ 
+
 #include <algorithm>
 #include <cstddef>
 #include <cstdint>
