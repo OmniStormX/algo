@@ -1,4 +1,4 @@
-// https://leetcode.cn/problems/minimum-sum-of-squared-difference
+// https://leetcode.cn/problems/sum-of-squares-of-special-elements
 #include <bits/stdc++.h>
 #define debug(x)    std::cerr << #x << " = " << x << std::endl
 using namespace std;
