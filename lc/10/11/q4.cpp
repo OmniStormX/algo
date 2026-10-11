@@ -40,7 +40,6 @@ public:
             }
         }
         int cur = s, p = 0;
-        int mn = *min_element(dp[0].begin(), dp[0].end());
         while (cur > 0 && dp[p][cur] == Inf) cur--;
         vector<int> ans;
         while (cur > 0) {
