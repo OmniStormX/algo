@@ -10,22 +10,25 @@ func minOperations(s string) int {
 	cnt := [26]int{}
 	f := true
 	for i := 0; i < n; i++ {
-		if mx < int(s[i]-'a') {
-			mx = int(s[i] - 'a')
+		c := int(s[i] - 'a')
+		if mx < c {
+			mx = c
 		}
-		if mn > int(s[i]-'a') {
-			mn = int(s[i] - 'a')
+		if mn > c {
+			mn = c
 		}
-		if i > 0 && int(s[i]-'a') < int(s[i-1]-'a') {
-			f = false
+		if i > 0 {
+			if c < int(s[i-1]-'a') {
+				f = false
+			}
 		}
-		cnt[int(s[i]-'a')]++
+		cnt[c]++
 	}
 	if f == true {
 		return 0
 	}
 	start, end := int(s[0]-'a'), int(s[n-1]-'a')
-	if int(s[0]-'a') == mx && int(s[n-1]-'a') == mn {
+	if start == mx && end == mn {
 		if n == 2 {
 			return -1
 		}
