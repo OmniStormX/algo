@@ -1,4 +1,4 @@
-package gotemplate
+package main
 
 import "fmt"
 
@@ -10,13 +10,17 @@ type Queue[T any] struct {
 	cap   int
 }
 
-func newQueue[T any]() *Queue[T] {
+func newQueue[T any](x ...int) *Queue[T] {
+	x0 := 1
+	if len(x) > 0 {
+		x0 = x[0]
+	}
 	return &Queue[T]{
-		x:     make([]T, 1),
+		x:     make([]T, x0),
 		start: 0,
 		end:   0,
 		size:  0,
-		cap:   1,
+		cap:   x0,
 	}
 }
 
