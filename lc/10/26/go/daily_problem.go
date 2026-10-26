@@ -3,17 +3,17 @@ package main
 
 import "fmt"
 
-type Queue struct {
-	x     []int
+type Queue[T any] struct {
+	x     []T
 	start int
 	end   int
 	size  int
 	cap   int
 }
 
-func newQueue() *Queue {
-	return &Queue{
-		x:     make([]int, 1),
+func newQueue[T any]() *Queue[T] {
+	return &Queue[T]{
+		x:     make([]T, 1),
 		start: 0,
 		end:   0,
 		size:  0,
@@ -21,8 +21,8 @@ func newQueue() *Queue {
 	}
 }
 
-func (q *Queue) Expand() {
-	tmp := make([]int, 2*q.cap)
+func (q *Queue[T]) Expand() {
+	tmp := make([]T, 2*q.cap)
 	for i := 0; i < q.size; i++ {
 		tmp[i] = q.x[(q.start+i)%q.cap]
 	}
@@ -32,7 +32,7 @@ func (q *Queue) Expand() {
 	q.end = q.size
 }
 
-func (q *Queue) Push(x int) {
+func (q *Queue[T]) Push(x T) {
 	if q.size == q.cap {
 		q.Expand()
 	}
@@ -42,9 +42,8 @@ func (q *Queue) Push(x int) {
 	q.size++
 }
 
-func (q *Queue) Pop() (x int, err error) {
+func (q *Queue[T]) Pop() (x T, err error) {
 	if q.size == 0 {
-		x = 0
 		err = fmt.Errorf("Queue size = 0, cannot pop item.")
 		return
 	}
@@ -62,7 +61,7 @@ func countIslands(grid [][]int, k int) int {
 		vis[i] = make([]bool, m)
 	}
 	f := func(x, y int) int {
-		q := newQueue()
+		q := newQueue[int]()
 		dx := []int{0, 0, 1, -1}
 		dy := []int{1, -1, 0, 0}
 		q.Push(x*m + y)
